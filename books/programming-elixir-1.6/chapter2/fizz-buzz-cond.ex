@@ -3,12 +3,15 @@ defmodule FizzBuzz do
     fizz_buzz(1, 100)
   end
 
-  def fizz_buzz(min, max) do
-    numbers = (min..max)
-    Enum.each(numbers, fn x -> fizz_buzz(x) end)
+  def fizz_buzz(n) do
+    Enum.each(1..n, fn x -> apply(x) end)
   end
 
-  def fizz_buzz(n) do
+  def fizz_buzz(min, max) do
+    Enum.each(min..max, fn x -> apply(x) end)
+  end
+
+  defp apply(n) do
     cond do
       rem(n, 15) == 0.0 -> IO.puts "#{n} FizzBuzz"
       rem(n, 3)  == 0.0 -> IO.puts "#{n} Fizz"
