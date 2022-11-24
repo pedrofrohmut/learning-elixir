@@ -41,12 +41,12 @@ defmodule Issues.TableFormatter do
       column_widths
       |> Enum.map(fn width -> List.duplicate("-", width) end)
       |> Enum.join("-+-")
-      |> IO.puts
+      |> IO.puts()
   )
 
   def print_table_body(data, format), do: (
       data
-      |> List.zip
+      |> List.zip()
       |> Enum.map(fn x -> Tuple.to_list(x) end)
       |> Enum.each(fn x -> :io.format(format, x) end)
   )
