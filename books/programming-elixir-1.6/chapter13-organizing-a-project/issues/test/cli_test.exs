@@ -21,7 +21,7 @@ defmodule CLITest do
   test "Sort issues by created_at is in the correct order" do
     result_list = sort_desc(create_fake_list(["c", "a", "d", "b"]))
     issues = for issue <- result_list, do: Map.get(issue, "created_at")
-    issues |> Kernel.inspect |> IO.puts
+    # issues |> Kernel.inspect |> IO.puts
     assert issues == ~w{ d c b a }
   end
 
@@ -31,6 +31,6 @@ defmodule CLITest do
 
   test "Take the same amount as the count passed" do
     result = take(~w{ d c b a }, 2)
-    assert result == ~w{ c d }
+    assert result == ~w{ d c }
   end
 end
