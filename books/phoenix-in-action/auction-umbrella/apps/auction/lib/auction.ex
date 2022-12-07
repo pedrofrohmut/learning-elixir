@@ -14,4 +14,8 @@ defmodule Auction do
     # Use '%Auction.Item', using pattern matching, to make sure you are passing and item
     # and don't delete a row from another table by mistake
     def delete_item(%Auction.Item{} = item), do: @repo.delete(item)
+
+    def update_item(%Auction.Item{} = item, updates) do
+        item |> Item.changeset(updates) |> @repo.update()
+    end
 end
