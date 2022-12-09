@@ -1,0 +1,36 @@
+<style>
+  .form-group {
+      margin-bottom: 10px;
+  }
+</style>
+
+<h1>New Item</h1>
+
+<%= form_for @item, Routes.items_path(@conn, :create), fn x -> %>
+  <%= if @item.action do %>
+    <div class="alert alert-dangerous">
+      Unfortunately, there are errors in your submission. Please correct them bellow.
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= label(x, :title) %>
+    <%= text_input(x, :title) %>
+    <%= error_tag(x, :title) %>
+  </div>
+
+  <div class="form-group">
+    <%= label(x, :description) %>
+    <%= text_input(x, :description) %>
+    <%= error_tag(x, :description) %>
+  </div>
+
+  <div class="form-group">
+    <%= label(x, :ends_at, "Auction ends at") %>
+    <%= datetime_select(x, :ends_at) %>
+    <%= error_tag(x, :ends_at) %>
+  </div>
+
+    <%= submit("Submit") %>
+  </div>
+<% end %>

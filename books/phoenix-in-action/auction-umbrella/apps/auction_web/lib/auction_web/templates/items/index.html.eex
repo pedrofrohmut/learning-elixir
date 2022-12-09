@@ -1,0 +1,17 @@
+<ul>
+    <%= for item <- @items do %>
+        <li>
+            <a href="http://127.0.0.1:4000/items/<%= item.id %>">
+                <strong><%= item.title %>:</strong>
+            </a>
+            <%= item.description %>
+        </li>
+
+        <!-- <li> -->
+        <!--     <strong> -->
+        <!--         <%= link(item.title, to: Routes.items_path(@conn, :show, item)) %> -->
+        <!--     </strong> -->
+        <!--     <%= item.description %> -->
+        <!-- </li> -->
+    <% end %>
+</ul>
