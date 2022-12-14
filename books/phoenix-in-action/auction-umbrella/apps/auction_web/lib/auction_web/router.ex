@@ -30,6 +30,10 @@ defmodule AuctionWeb.Router do
         # delete "/items/:id",      ItemsController, :delete
         resources "/items", ItemsController, only: [:index, :show, :new, :create, :edit, :update]
         resources "/users", UsersController, only: [:show, :new, :create]
+
+        get    "/signin",  SessionController, :new
+        post   "/signin",  SessionController, :create
+        delete "/signout", SessionController, :delete
     end
 
     # Other scopes may use custom stacks.

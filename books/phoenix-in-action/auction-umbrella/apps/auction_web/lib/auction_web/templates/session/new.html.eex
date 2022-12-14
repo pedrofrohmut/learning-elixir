@@ -1,0 +1,13 @@
+<h1>Sign In</h1>
+
+<%= form_for @conn, Routes.session_path(@conn, :create), [as: :user], fn form -> %>
+    <%= label(form, :username) %>
+    <%= text_input(form, :username) %>
+
+    <%= label(form, :password) %>
+    <%= password_input(form, :password) %>
+
+    <div>
+        <%= submit("Submit") %>
+    </div>
+<% end %>
