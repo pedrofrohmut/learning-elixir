@@ -6,9 +6,10 @@ defmodule Auction.Item do
     import Ecto.Changeset
 
     schema "items" do
-        field :title,       :string
-        field :description, :string
-        field :ends_at,     :utc_datetime
+        field    :title,       :string
+        field    :description, :string
+        field    :ends_at,     :utc_datetime
+        has_many :bids,        Auction.Bid
         timestamps() # Adds inserted_at and updated_at columns
     end
 

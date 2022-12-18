@@ -29,8 +29,15 @@ defmodule AuctionWeb.Router do
         # patch  "/items/:id",      ItemsController, :update
         # put    "/items/:id",      ItemsController, :update
         # delete "/items/:id",      ItemsController, :delete
-        resources "/items", ItemsController, only: [:index, :show, :new, :create, :edit, :update]
+        resources "/items", ItemsController, 
+             only: [:index, :show, :new, :create, :edit, :update] 
+        do
+            # Nested routes <BASE_URL>/items/123/bids
+            resources "/bids",  BidsController,  only: [:create]
+        end
+
         resources "/users", UsersController, only: [:show, :new, :create]
+
 
         get    "/signin",  SessionController, :new
         post   "/signin",  SessionController, :create

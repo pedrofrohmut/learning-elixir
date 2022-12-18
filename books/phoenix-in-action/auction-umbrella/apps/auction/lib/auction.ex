@@ -1,5 +1,5 @@
 defmodule Auction do
-    alias Auction.{ Repo, Item, User, Password}
+    alias Auction.{ Bid, Repo, Item, User, Password }
 
     @repo Repo
 
@@ -30,21 +30,20 @@ defmodule Auction do
     def insert_user(params) do
         %User{}
         |> User.changeset_with_password(params)
-        |> Kernel.inspect()
-        |> IO.puts()
-
-        %User{}
-        |> User.changeset_with_password(params)
         |> @repo.insert()
     end
 
-    def get_user_by_username_and_password(username, password), do: (
+    def get_user_by_username_and_password(username, password) do
         user = @repo.get_by(User, %{ username: username })
         if is_nil(user), do: nil, else: (
-            case Password.verify_with_hash(password, user.password_hash), do: (
+            case Password.verify_with_hash(password, user.password_hash) do
                 true  -> user
                 false -> nil
-            )
+            end
         )
-    )
+    end
+
+    def insert_bid(params), do: Bid.changeset(%Bid{}, params) |> @repo.insert()
+
+    def new_bid(), do: Bid.changeset(%Bid{})
 end

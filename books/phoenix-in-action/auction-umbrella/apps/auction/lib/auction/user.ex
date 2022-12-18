@@ -4,10 +4,11 @@ defmodule Auction.User do
     import Ecto.Changeset
 
     schema("users") do
-        field(:username,      :string)
-        field(:email,         :string)
-        field(:password,      :string, virtual: true)
-        field(:password_hash, :string)
+        field    :username,      :string
+        field    :email,         :string
+        field    :password,      :string,    virtual: true
+        field    :password_hash, :string
+        has_many :bids,          Auction.Bid
         timestamps()
     end
 
